@@ -1,7 +1,12 @@
 import { Container } from "./styles";
 import { useTransactions } from "../../hooks/useTransactions";
+import closeImg from "../../assets/close.svg";
 
-export function TransactionsTable() {
+interface TransactionsTableProps {
+  onOpenDeleteTransactionModal: () => void;
+}
+
+export function TransactionsTable({ onOpenDeleteTransactionModal }: TransactionsTableProps) {
 
   const { transactions } = useTransactions();
   
@@ -33,9 +38,14 @@ export function TransactionsTable() {
                   new Date(transaction.createdAt)
                 )}
               </td>
-              {/* <td>
-                <button>teste</button>
-              </td> */}
+              <td>
+                <button type="button">
+                  <img src={closeImg} alt="Deletar transação" />
+                </button>
+                <button type="button">
+                  <img src={closeImg} alt="Editar transação" />
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
