@@ -39,7 +39,7 @@ export function TransactionsTable({ onOpenDeleteTransactionModal }: Transactions
                 )}
               </td>
               <td>
-                <button type="button">
+                <button type="button" onClick={onOpenDeleteTransactionModal}>
                   <img src={closeImg} alt="Deletar transação" />
                 </button>
                 <button type="button">

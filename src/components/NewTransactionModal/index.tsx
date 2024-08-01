@@ -46,7 +46,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
     >
-      <button 
+      <button
         type='button' 
         onClick={onRequestClose} 
         className='react-modal-close'
@@ -63,12 +63,11 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
           onChange={event => setTitle(event.target.value)}
         />
 
-        <input 
+        <input
           type='number' 
           placeholder='Valor'
           value={amount}
-          onChange={(event) => {setAmount(Number(event.target.value));}}
-
+          onChange={(event) => {setAmount(Number(event.target.value))}}
         />
 
         <TransactionTypeContainer>
