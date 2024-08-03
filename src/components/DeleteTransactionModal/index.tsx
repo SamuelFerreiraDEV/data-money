@@ -1,15 +1,26 @@
 import Modal from 'react-modal';
 import closeImg from '../../assets/close.svg';
-import { OptionButton } from './styles';
-
+import { Container, OptionButton } from './styles';
+import { useTransactions } from '../../hooks/useTransactions';
 
 interface DeleteTransactionModalProps {
   isOpen: boolean,
   onRequestClose: () => void,
+  transactionId: number,
 }
 
-export function DeleteTransactionModal({ isOpen, onRequestClose }: DeleteTransactionModalProps) {
+export function DeleteTransactionModal({ 
+  isOpen, 
+  onRequestClose, 
+  transactionId
+ }: DeleteTransactionModalProps) {
 
+  const { deleteTransaction } = useTransactions();
+
+  async function handleDeleteTransaction() {
+    await deleteTransaction(transactionId);
+    onRequestClose();
+  }
 
   return (
     <Modal
@@ -26,17 +37,23 @@ export function DeleteTransactionModal({ isOpen, onRequestClose }: DeleteTransac
         <img src={closeImg} alt='fechar modal' />
       </button>
 
-      <OptionButton
-        bgColor='green'
-      >
-        <span>Confirmar</span>
-      </OptionButton>
-
-      <OptionButton
-        bgColor='red'
-      >
-        <span>Cancelar</span>
-      </OptionButton>
+      <Container>
+        <span>Deseja deletar esta entrada?</span>
+        <div>
+          <OptionButton
+            bgColor='green'
+            onClick={() => handleDeleteTransaction()}
+          >
+            <span>Confirmar</span>
+          </OptionButton>
+          <OptionButton
+            bgColor='red'
+            onClick={onRequestClose}
+          >
+            <span>Cancelar</span>
+          </OptionButton>
+        </div>
+      </Container>
     </Modal>
   )
 }

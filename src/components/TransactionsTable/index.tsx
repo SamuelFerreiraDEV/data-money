@@ -3,7 +3,7 @@ import { useTransactions } from "../../hooks/useTransactions";
 import closeImg from "../../assets/close.svg";
 
 interface TransactionsTableProps {
-  onOpenDeleteTransactionModal: () => void;
+  onOpenDeleteTransactionModal: (id: number) => void;
 }
 
 export function TransactionsTable({ onOpenDeleteTransactionModal }: TransactionsTableProps) {
@@ -39,7 +39,7 @@ export function TransactionsTable({ onOpenDeleteTransactionModal }: Transactions
                 )}
               </td>
               <td>
-                <button type="button" onClick={onOpenDeleteTransactionModal}>
+                <button type="button" onClick={() => onOpenDeleteTransactionModal(transaction.id)}>
                   <img src={closeImg} alt="Deletar transação" />
                 </button>
                 <button type="button">

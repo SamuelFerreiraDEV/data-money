@@ -2,15 +2,16 @@ import { useState } from "react";
 import { Summary } from "../Summary";
 import { TransactionsTable } from "../TransactionsTable";
 import { Container } from "./styles";
-import { log } from "console";
 import { DeleteTransactionModal } from "../DeleteTransactionModal";
 
 export function Dashboard() {
   
   const [isDeleteTransactionModalOpen, setIsDeleteTransactionModalOpen] = useState(false);
+  const [deleteTransactionId, setDeleteTransactionId] = useState(0);
 
-  function handleOpenDeleteTransactionModal() {
+  function handleOpenDeleteTransactionModal(id: number) {
     setIsDeleteTransactionModalOpen(true);     
+    setDeleteTransactionId(id);
   }
   
   function handleCloseDeleteTransactionModal() {
@@ -24,6 +25,7 @@ export function Dashboard() {
       <DeleteTransactionModal
         isOpen={isDeleteTransactionModalOpen}
         onRequestClose={handleCloseDeleteTransactionModal}
+        transactionId={deleteTransactionId}
       />
     </Container>
   );

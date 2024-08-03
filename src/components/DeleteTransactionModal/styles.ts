@@ -8,7 +8,20 @@ interface OptionButtonProps {
 const colors = {
   green: '#33cc95',
   red: '#E52E4D'
-}
+};
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  
+  div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+`
 
 export const OptionButton = styled.button<OptionButtonProps>`
   height: 4rem;
