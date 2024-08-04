@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+interface ContainerProps {
+  bgColor: 'green' | 'red',
+}
+
+const colors = {
+  green: '#33cc95',
+  red: '#E52E4D'
+}
+
+export const Container = styled.div<ContainerProps>`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
@@ -11,7 +20,6 @@ export const Container = styled.div`
     padding: 1.5rem 2rem;
     border-radius: 0.25rem;
     color: var(--text-title);
-
 
     header {
       display: flex;
@@ -28,9 +36,8 @@ export const Container = styled.div`
     }
 
     &.highlight-background {
-      background: var(--green);
+      background: ${({bgColor}) => colors[bgColor]};
       color: #fff;
     }
   }
-
 `;

@@ -26,7 +26,9 @@ export function Summary() {
   });
 
   return (
-    <Container>
+    <Container
+      bgColor={summary.total < 0? 'red': 'green'}
+    >
       <div>
         <header>
           <p>Entradas</p>
